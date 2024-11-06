@@ -10,7 +10,23 @@ from clases.selenium_driver import *
 from config import USER, PASSWORD
 
 class Asistente():
-    def __init__(self):        
+    def __init__(self):
+        """
+        Este método inicializa la clase Asistente estableciendo las credenciales de usuario, la URL e iniciando el SeleniumDriver. Luego intenta iniciar sesión en la interfaz de chat de OpenAI. Si el inicio de sesión falla, imprime un mensaje de error y sale.
+
+        Atributos:
+        USER : str
+        El correo electrónico del usuario para el inicio de sesión en el chat de OpenAI.
+        PASSWORD : str
+        La contraseña del usuario para el inicio de sesión en el chat de OpenAI.
+        url : str
+        La URL de la interfaz de chat de OpenAI.
+        uc : SeleniumDriver
+        Una instancia de la clase SeleniumDriver para controlar el navegador web.
+
+        Retorna:
+        Ninguno
+        """
         self.USER = USER
         self.PASSWORD = PASSWORD
         self.url = "https://chat.openai.com"
@@ -24,6 +40,15 @@ class Asistente():
             exit()
 
     def login_openai(self):
+        """
+        Esta función intenta iniciar sesión en la interfaz de chat de OpenAI utilizando las credenciales de usuario proporcionadas. Primero navega a la URL especificada, luego realiza el proceso de inicio de sesión ingresando el correo electrónico y la contraseña del usuario. Después del proceso de inicio de sesión, verifica si el inicio de sesión fue exitoso comprobando la presencia de un elemento específico.
+
+        Parámetros:
+        Ninguno
+
+        Retorna:
+        bool: Devuelve True si el inicio de sesión fue exitoso, False en caso contrario.
+        """
         print(f'\33[K{azul}Cargando Asistente...\n{gris}')  
         self.uc.Driver.get(self.url)
         self.uc.Driver.wait.load_start()
@@ -44,7 +69,15 @@ class Asistente():
             print(f'\33[K{azul}COOKIES: {rojo}FALLIDO{gris}')
 
     def comprobar_login(self, tmpo=3):
+        """
+        Esta función verifica si el usuario ha iniciado sesión correctamente en la interfaz de chat de OpenAI. Intenta localizar un elemento específico en la página para verificar el estado de inicio de sesión. Si el inicio de sesión es exitoso, devuelve True. De lo contrario, devuelve False.
 
+        Parámetros:
+        tmpo (int, opcional): El tiempo máximo (en segundos) para esperar a que se complete el inicio de sesión. Por defecto es 3 segundos.
+
+        Retorna:
+        bool: Devuelve True si el inicio de sesión es exitoso, False en caso contrario.
+        """
         login = False
         while tmpo > 0:
             try:
@@ -72,6 +105,15 @@ class Asistente():
         return login
 
     def ultima_conversacion(self, tmpo=3):
+        """
+        Esta función intenta hacer clic en el botón "Historial" en la interfaz de usuario para acceder a la última conversación. Si no se encuentra el botón "Historial" dentro del tiempo de espera especificado, imprime un mensaje indicando que no se encontró la última conversación.
+
+        Parámetros:
+        tmpo (int, opcional): El tiempo máximo (en segundos) para esperar a que el botón "Historial" sea clicable. Por defecto es 3 segundos.
+
+        Retorna:
+        Ninguno
+        """
         try:
             self.uc.Driver.ele('tx=Historial',  timeout=tmpo).click()            
         except:
@@ -80,6 +122,15 @@ class Asistente():
         
     def chatear(self, prompt = None):
         if prompt:
+            """
+            Esta función simula una conversación con un modelo de IA enviando un mensaje inicial o pregunta y recibiendo una respuesta.
+
+            Parámetros:
+            prompt (str, opcional): El mensaje inicial o pregunta que se enviará al modelo de IA. Si no se proporciona, la función devolverá None.
+
+            Retorna:
+            str: La respuesta generada por el modelo de IA. Si no se proporciona ningún mensaje, la función devolverá None.
+            """
             # Intruduce texto en el promp o textbox
             self.uc.Driver.ele('#:prompt-textarea').input(prompt)
             self.uc.Driver.ele('css:[data-testid="send-button"]').click()
@@ -117,6 +168,18 @@ class Asistente():
             return None
     
     def buscar_texto_en_navegador(self, texto_a_buscar):
+        """
+        Esta función busca un texto específico en el navegador web utilizando Google.
+
+        Parámetros:
+        texto_a_buscar (str): El texto que se va a buscar. La función espera que la entrada esté en el formato "to_google <texto_a_buscar>".
+
+        Retorna:
+        Ninguno: La función no devuelve ningún valor. Imprime un mensaje de error si ocurre una excepción durante la búsqueda.
+
+        Excepciones:
+        Exception: Si ocurre un error durante la búsqueda, se captura y se imprime un mensaje de error.
+        """
         try: 
             texto_filtrado = texto_a_buscar.split("to_google ", 1)
             nav = GoogleDriver()

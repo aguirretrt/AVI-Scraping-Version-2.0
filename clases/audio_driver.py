@@ -7,7 +7,7 @@ import re
 from gtts import gTTS
 from io import BytesIO
 
-from threading import Thread, Event
+from threading import Thread
 from datetime import datetime
 from pygame import mixer, time
 
@@ -50,7 +50,7 @@ class AudioDriver():
         self.inicia_drivers_audio()
         
 
-        print(f'{azul}Detectando Drivers de Sonido...{gris}')
+        print(f'{azul}Detectando Drivers de Sonido...\n{gris}')
         
     def activar(self, comando):
         """
@@ -249,8 +249,6 @@ class AudioDriver():
             self.api.adjust_for_ambient_noise(fuente)
         # Escucha en segundo plano
         self.api.listen_in_background(fuente, self.reconocer_voz)
-        # self.listen_thread = Thread(target=self.reconocer_voz, args=(self.api, fuente))
-        # self.listen_thread.start()
     
     def cerrar_hilos(self):
         # Cierra el proceso de escucha en segundo plano del reconocedor de voz

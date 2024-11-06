@@ -27,7 +27,7 @@ def main():
     texto_terminal = TextoTerminal()
     audio_driver = AudioDriver()
 
-    text = '\nBuenas, ya podemos comunicarnos libremente...'
+    text = 'Buenas, ya podemos comunicarnos libremente...'
     print(f'{verde}{text}{gris}')    
     audio_driver.thread_texto_a_audio(text)
     print(f'{rojo}{gris}')
@@ -39,7 +39,7 @@ def main():
             if voz or texto:
                 if len(texto.split()) > 20:
                     tmp_texto = ": " + texto
-                    print(f'\33[K{azul2}{texto}\n{gris}')
+                    print(f'\33[K{azul2}\n{texto}\n{gris}')
                     audio_driver.texto_a_audio("El texto ingresado contiene más de 20 palabras. ¿Que desea hacer con él?")
                     texto = None
 
@@ -67,7 +67,7 @@ def main():
                         print()
                         # Envia la respuesta de texto a reproducir en audio
                         audio_driver.thread_texto_a_audio(respuesta)
-            print(f'{rojo}Escuchando... {gris}')
+            print(f'{rojo}Escuchando...{gris}')
             cursor_arriba()
             sleep(1)  # Reducir la carga del CPU
     exit()

@@ -35,3 +35,23 @@ Asistente Virtual Inteligente basado en tecnicas de Scraping
 * Intalar los paquetes del archivo requirements.txt
   pip3 install -r requirements.txt --break-system-packages
 
+* Funcionalidad
+
+  Para activar el asistente y que este reconozca que se le está dirigiendo un comando, 
+  es necesario utilizar las palabras de activación que se encuentran en el archivo config.py.
+  Estas palabras pueden personalizarse o ampliarse para incluir otras frases de su elección.
+  Ejemplo de uso: Asistente quiero o Asistente dime, seguido de la instrucción deseada.
+
+  En el archivo audio_driver.py se encuentran algunos comandos predefinidos para tareas
+  específicas. Si tiene conocimientos de Python, puede agregar y personalizar otros comandos
+  para realizar funciones particulares según sus necesidades.
+
+  Tenga en cuenta que, si utiliza micrófono y audífonos, no tendrá inconvenientes al usar 
+  el asistente. Sin embargo, si no los utiliza, deberá bajar un poco el volumen de salida 
+  para evitar que el micrófono capture el audio de salida junto con su voz. Esto podría 
+  impedir que el asistente entienda correctamente sus comandos. Para finalizar la 
+  reproducción del audio, simplemente debe decir: Asistente quiero finalizar.
+
+  Para finalizar la comunicación con el asistente, simplemente debe 
+  decir: Asistente quiero finalizar.
+
