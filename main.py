@@ -10,12 +10,23 @@ from clases.audio_driver import *
 from clases.texto_terminal import *
 
 def main():
-    # Aca se crean los objetos y se inicializan los drivers    
+    """
+    Esta función inicializa los objetos y controladores necesarios, y luego entra en un bucle 
+    donde escucha la entrada del usuario (voz o texto) y responde en consecuencia.
+    La función también maneja comandos específicos e interacciones con las clases Asistente,
+    TextoTerminal y AudioDriver.
+
+    Parámetros:
+    Ninguno
+
+    Retorna:
+    Ninguno
+    """
     asistente = Asistente()
     asistente.ultima_conversacion()
     texto_terminal = TextoTerminal()
     audio_driver = AudioDriver()
-    
+
     text = '\nBuenas, ya podemos comunicarnos libremente...'
     print(f'{verde}{text}{gris}')    
     audio_driver.thread_texto_a_audio(text)

@@ -1,5 +1,11 @@
 Asistente Virtual Inteligente basado en tecnicas de Scraping
 
+* Nota: este asistente utiliza como base el motor de IA de ChatGpt
+  por lo tanto debe tener una cuenta regitrada, los datos de usuario
+  y contrseña deben ser añadidos al archivo config.py
+  Para que el AVI recupere las conversaciones, en la barra lateral debe existir
+  una seccion con el nombre "Historial".
+
 * Instalar python 3.11.4 o Mayor
 * Instalar pip 3
 * Instalar Google Chrome
@@ -9,9 +15,6 @@ Asistente Virtual Inteligente basado en tecnicas de Scraping
   sudo apt install python3-pyaudio
   sudo apt-get install ffmpeg
   sudo apt-get install xvfb
-
-* Para no visualizar los Errores de los Drivers de sonido, agregar al final de la linea el siguiente comando "2>/dev/null"
- -Ej: python3 miprograma.py 2>/dev/null
 
 * Intalar los paquetes del archivo requirements.txt
   pip3 install -r requirements.txt --break-system-packages
