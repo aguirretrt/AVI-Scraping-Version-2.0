@@ -7,7 +7,7 @@ Asistente Virtual Inteligente basado en tecnicas de Scraping
   una seccion con el nombre "Historial".
 
 * Instalar python 3.11.4 o Mayor
-* Instalar pip 3
+* Instalar pip3
 * Instalar Google Chrome
 * Instalar NoiseTorch (opcional)
 
